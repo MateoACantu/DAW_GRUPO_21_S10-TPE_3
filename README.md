@@ -92,7 +92,6 @@ debe avisarse al equipo antes de aplicarlo.
 
 ## Uso académico
 
-Proyecto desarrollado con fines académicos para la práctica G003-S10 de
+Proyecto desarrollado con fines académicos para la práctica TPE3 de
 Desarrollo de Aplicaciones Web. La API de Game of Thrones se cita como fuente
-de los datos. El logo del sitio debe ser un emblema propio del grupo; no se
-usarán logotipos oficiales protegidos.
+de los datos.

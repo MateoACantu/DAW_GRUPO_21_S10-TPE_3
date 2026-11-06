@@ -1,0 +1,118 @@
+/* ============================================================================
+   styles.css — Hoja de estilos única del sitio
+   Fase 3 · Responsable: [Integrante 3]
+   ============================================================================
+
+   OBJETIVO
+   Convertir los mockups de la guía en el aspecto visual final del sitio. Este
+   archivo se organiza por secciones comentadas y consume únicamente las
+   variables declaradas en :root.
+
+   ORDEN RECOMENDADO DE LAS SECCIONES
+   01. Variables (:root)
+   02. Reset y base
+   03. Tipografía
+   04. Utilidades y contenedores
+   05. Encabezado y navegación (#navbar)
+   06. Título de sección
+   07. Tarjeta de integrante (.card-integrante)
+   08. Tarjeta de personaje (.card-personaje)
+   09. Controles y estados (#buscador, #filtro-casa, #contador, #estado)
+   10. Pie de página
+   11. Responsive (576 px, 768 px y 992 px)
+
+   PALETA OBLIGATORIA (§4.2 DE LA GUÍA)
+   Declarar una sola vez en :root y usar var(--nombre) en el resto del archivo.
+   No escribir valores hexadecimales sueltos fuera de :root.
+
+     --negro-hierro : #0E0E10   Fondo general
+     --grafito      : #1C1D21   Barra superior, tarjetas y pie
+     --oro          : #C9A24B   Títulos, etiquetas y líneas decorativas
+     --rojo         : #9B1C1F   Enlaces activos, botones, foco y hover
+     --pergamino    : #E9DFC7   Texto principal sobre fondos oscuros
+     --hielo        : #8FA9B8   Texto secundario y bordes en hover
+     --acero        : #5B6168   Bordes sutiles y texto deshabilitado
+
+   Ejemplo de la declaración que debe existir (hoy comentada como referencia):
+     :root {
+       --negro-hierro: #0E0E10;
+       --grafito:      #1C1D21;
+       --oro:          #C9A24B;
+       --rojo:         #9B1C1F;
+       --pergamino:    #E9DFC7;
+       --hielo:        #8FA9B8;
+       --acero:        #5B6168;
+     }
+
+   TIPOGRAFÍA (§4.3)
+   - Títulos y nombre de la serie: Cinzel (Google Fonts).
+   - Cuerpo: Lora o Crimson Text (Google Fonts).
+   - Declarar siempre una fuente de respaldo: Georgia, serif.
+   - El sitio debe verse bien aunque Google Fonts no cargue.
+
+   COMPONENTES
+   - Encabezado: barra grafito con línea inferior dorada; estados normal,
+     hover y activo. El enlace de la página actual va en pergamino con
+     subrayado rojo; el otro en azul hielo.
+   - Tarjeta de integrante: fondo grafito, borde fino de acero, línea superior
+     dorada, esquinas de 4 px, foto centrada y datos alineados. Hover con
+     elevación y borde azul hielo.
+   - Tarjeta de personaje: disposición horizontal, imagen a la izquierda con
+     proporción fija y object-fit: cover, cuerpo a la derecha con nombre y
+     datos. Hover coherente con la tarjeta de integrante.
+   - Controles: campo de búsqueda y selector con foco visible (anillo rojo o
+     dorado). Mensajes de carga y error legibles.
+   - Pie: fondo grafito, texto secundario y enlace al crédito de la API.
+
+   CONTRATO TÉCNICO QUE DEBE ESTILIZAR (§7.1 Y §7.2)
+   - #navbar, .nav-link, .nav-link.active
+   - #integrantes
+   - .card-integrante, .card-integrante__foto,
+     .card-integrante__nombre, .card-integrante__dato
+   - #buscador, #filtro-casa, #contador, #estado
+   - #lista-personajes
+   - .card-personaje, .card-personaje__imagen, .card-personaje__cuerpo,
+     .card-personaje__nombre, .card-personaje__dato
+
+   RESPONSIVE
+   - Puntos de quiebre: 576 px, 768 px y 992 px.
+   - Sin desplazamiento horizontal en 375 px, 768 px y 1280 px de ancho.
+   - Rejilla de integrantes: 3 columnas en escritorio, 2 en tableta, 1 en móvil.
+   - Rejilla de personajes: 2 columnas en escritorio, 1 en móvil.
+
+   REGLAS DE CALIDAD (§8 FASE 3 Y §8 FASE 5)
+   - Un único archivo CSS, ordenado por secciones comentadas.
+   - Todos los colores mediante variables.
+   - Evitar !important injustificado y reglas duplicadas.
+   - Indentación de 2 espacios y comentarios en español.
+   - Validar con el validador CSS del W3C antes de la integración.
+
+   RECURSOS QUE ACOMPAÑAN A ESTA FASE
+   - img/logo/: emblema propio del grupo (no usar logotipos oficiales de la
+     serie). Puede ser una corona o un escudo sencillo con las iniciales.
+   - img/placeholder-personaje.png: imagen de respaldo cuando falle la imagen
+     de un personaje. Se deja una versión provisional para reemplazar.
+
+   REFERENCIAS
+   - Guía de Planificación: §4.2 (paleta), §4.3 (tipografía y componentes),
+     §5.1 y §5.2 (mockups), §7.1 y §7.2 (contrato), §8 Fase 3, §8 Fase 5 y
+     §10 (riesgos).
+   ============================================================================ */
+
+/* TODO Fase 3: declarar :root con la paleta y las fuentes del proyecto. */
+
+/* TODO Fase 3: reset y estilos base (fondo, color de texto, tipografía). */
+
+/* TODO Fase 3: encabezado y navegación (#navbar, .nav-link, .active). */
+
+/* TODO Fase 3: título de sección y utilidades. */
+
+/* TODO Fase 3: tarjeta de integrante (.card-integrante y sus elementos). */
+
+/* TODO Fase 3: tarjeta de personaje (.card-personaje y sus elementos). */
+
+/* TODO Fase 3: controles, mensajes de estado y botón Reintentar. */
+
+/* TODO Fase 3: pie de página. */
+
+/* TODO Fase 3: responsive en 576 px, 768 px y 992 px. */

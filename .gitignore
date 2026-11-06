@@ -1,0 +1,32 @@
+# ============================================================================
+# .gitignore — Archivos que no deben subirse al repositorio
+# Fase 5 · Responsable: [Integrante 5]
+# Referencia: Guía de Planificación, §6 (estructura) y §8 Fase 5.
+# ============================================================================
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores e IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Dependencias o artefactos de herramientas (no aplica al sitio base,
+# pero se previene por si se agrega alguna herramienta local)
+node_modules/
+dist/
+build/
+
+# Archivos personales que no forman parte del entregable
+*.zip
+*.rar
+*.7z

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  personajes.html — Página de personajes · «Personajes de la serie»
+  Fase 2 · Responsable: [Integrante 2]
+  ============================================================================
+
+  OBJETIVO
+  Construir el armazón de la página que luego llena el JavaScript. Aquí NO se
+  escriben personajes a mano: solo se definen los contenedores y los controles
+  que js/personajes.js necesita. El diseño vive en css/styles.css.
+
+  CONTENIDO QUE DEBE IR EN ESTE ARCHIVO
+  1. Cabecera, encabezado, navegación y pie
+     - Deben ser idénticos a los de index.html, carácter por carácter.
+     - Solo cambia el enlace activo (.active en «Personajes») y el <title>
+       de la pestaña.
+     - Bootstrap 5 por CDN, Google Fonts y css/styles.css con rutas relativas.
+
+  2. Título de sección
+     - «Personajes de la serie» centrado y con filete dorado.
+
+  3. Barra de controles
+     - #buscador: campo de búsqueda por nombre, con su <label> asociado.
+     - #filtro-casa: selector de casa, con su <label> asociado.
+     - #contador: texto «Mostrando X de Y», con su etiqueta (aunque sea
+       visualmente oculta).
+
+  4. Zona de estado
+     - #estado con aria-live="polite"; vacío por defecto.
+     - Aquí se muestran «Cargando personajes...», los errores y el botón
+       «Reintentar».
+
+  5. Contenedor del listado
+     - #lista-personajes como div.row de Bootstrap.
+     - Debe estar vacío: las tarjetas las genera JavaScript.
+
+  6. Carga de scripts
+     - <script src="js/main.js" defer></script>
+     - <script src="js/personajes.js" defer></script>
+     - Respetar ese orden y las rutas relativas.
+
+  CONTRATO TÉCNICO QUE DEBE RESPETAR (§7.1 DE LA GUÍA)
+  - #navbar y .nav-link (con .active en «Personajes»).
+  - #buscador, #filtro-casa, #contador y #estado.
+  - #lista-personajes.
+  - La tarjeta de personaje la genera la fase 4 con esta estructura:
+      .card-personaje
+        .card-personaje__imagen
+        .card-personaje__cuerpo
+          .card-personaje__nombre
+          .card-personaje__dato
+  - No cambiar estos nombres sin avisar al equipo.
+
+  REGLAS DE LA GUÍA
+  - Sin estilos en línea ni scripts embebidos.
+  - Rutas relativas: el sitio debe abrir con doble clic (file://).
+  - No usar type="module"; scripts clásicos con defer.
+  - Encabezado y pie idénticos a index.html (revisión lado a lado).
+
+  REFERENCIAS
+  - Guía de Planificación: §1 (propósito y alcance), §4 (identidad visual),
+    §5.2 (mockup 2), §6 (estructura de archivos), §7.1 y §7.2 (contrato y
+    estructura de la tarjeta), §7.3 (API), §8 Fase 2, §9 (GitHub), §10
+    (riesgos) y §11 (lista de verificación).
+  ============================================================================
+-->
+<html lang="es">
+<head>
+  <!-- TODO Fase 2: completar la cabecera igual que en index.html, cambiando solo el <title>. -->
+</head>
+<body>
+  <!-- TODO Fase 2: copiar encabezado, navegación y pie de index.html; luego agregar título, controles, #estado y #lista-personajes. -->
+</body>
+</html>

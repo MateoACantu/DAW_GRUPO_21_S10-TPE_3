@@ -18,12 +18,12 @@ aceptación está en:
 
 | Rol | Integrante | Archivo / entregable | Rama |
 |-----|------------|----------------------|------|
-| 1 | Jhonatan Christian Catota Verdezoto | `index.html` | `feat/index` |
-| 2 | Juan Carlos Izurieta Cisneros | `personajes.html` | `feat/personajes` |
-| 3 | Jorge Marcelo Lojano Novillo | `js/personajes.js` | `feat/js` |
-| 4 | Pablo Andres Farro Vera | `css/styles.css` | `feat/styles` |
-| 5 | Joseph Salvatore Vallejo Rodriguez | Revisión y correcciones | `qa/revision` |
-| 6 | Mateo Alexander Cantuña Intriago | Informe y entrega | `docs/informe` |
+| 1 | [INTEGRANTE 1] | `index.html` | `feat/index` |
+| 2 | [INTEGRANTE 2] | `personajes.html` | `feat/personajes` |
+| 3 | [INTEGRANTE 3] | `js/personajes.js` | `feat/js` |
+| 4 | [INTEGRANTE 4] | `css/styles.css` | `feat/styles` |
+| 5 | [INTEGRANTE 5] | Revisión y correcciones | `qa/revision` |
+| 6 | [INTEGRANTE 6] | Informe y entrega | `docs/informe` |
 
 Cada archivo tiene un solo dueño. No se edita el archivo de otro rol.
 

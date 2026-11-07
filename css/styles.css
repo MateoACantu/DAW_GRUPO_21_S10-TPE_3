@@ -99,9 +99,68 @@
      §10 (riesgos).
    ============================================================================ */
 
-/* TODO Fase 3: declarar :root con la paleta y las fuentes del proyecto. */
+/* ==========================================================================
+   01. Variables (:root)
+   ========================================================================== */
 
-/* TODO Fase 3: reset y estilos base (fondo, color de texto, tipografía). */
+
+   :root {
+     /* Paleta */
+     --negro-hierro: #0E0E10;
+     --grafito:      #1C1D21;
+     --oro:          #C9A24B;
+     --rojo:         #9B1C1F;
+     --pergamino:    #E9DFC7;
+     --hielo:        #8FA9B8;
+     --acero:        #5B6168;
+   
+     /* Tipografía con fuente de respaldo */
+     --fuente-titulos: "Cinzel", Georgia, serif;
+     --fuente-cuerpo:  "Lora", Georgia, serif;
+   }
+   
+   /* ==========================================================================
+      02. Reset y base
+      ========================================================================== */
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+   }
+   
+   body {
+     margin: 0;
+     background-color: var(--negro-hierro);
+     color: var(--pergamino);
+     font-family: var(--fuente-cuerpo);
+     line-height: 1.6;
+   }
+   
+   img {
+     max-width: 100%;
+     height: auto;
+     display: block;
+   }
+   
+   a {
+     color: var(--hielo);
+   }
+   
+   a:hover {
+     color: var(--oro);
+   }
+   
+   /* ==========================================================================
+      03. Tipografía
+      ========================================================================== */
+   h1,
+   h2,
+   h3,
+   h4 {
+     font-family: var(--fuente-titulos);
+     color: var(--oro);
+     line-height: 1.2;
+   }
 
 /* TODO Fase 3: encabezado y navegación (#navbar, .nav-link, .active). */
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-  ============================================================================
+  ==========================================================================
   personajes.html — Página de personajes · «Personajes de la serie»
   Fase 2 · Responsable: [Integrante 2]
-  ============================================================================
+  ==========================================================================
 
   OBJETIVO
   Construir el armazón de la página que luego llena el JavaScript. Aquí NO se
@@ -35,9 +35,8 @@
      - #lista-personajes como div.row de Bootstrap.
      - Debe estar vacío: las tarjetas las genera JavaScript.
 
-  6. Carga de scripts
-     - <script src="js/main.js" defer></script>
-     - <script src="js/personajes.js" defer></script>
+  6. Scripts al final del <body>
+     - Bootstrap bundle, js/main.js y js/personajes.js, todos con defer.
      - Respetar ese orden y las rutas relativas.
 
   CONTRATO TÉCNICO QUE DEBE RESPETAR (§7.1 DE LA GUÍA)
@@ -63,13 +62,90 @@
     §5.2 (mockup 2), §6 (estructura de archivos), §7.1 y §7.2 (contrato y
     estructura de la tarjeta), §7.3 (API), §8 Fase 2, §9 (GitHub), §10
     (riesgos) y §11 (lista de verificación).
-  ============================================================================
+  ==========================================================================
 -->
 <html lang="es">
 <head>
-  <!-- TODO Fase 2: completar la cabecera igual que en index.html, cambiando solo el <title>. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes · Grupo 21 · Game of Thrones</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: Cinzel y Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- TODO Fase 2: copiar encabezado, navegación y pie de index.html; luego agregar título, controles, #estado y #lista-personajes. -->
+
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+                <!-- Logo y Título de la Serie -->
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="img/logo/logo.png" alt="Emblema del Grupo 21" width="40" height="40" class="d-inline-block align-text-top rounded border border-warning">
+                    <span class="series-title font-cinzel fw-bold">Game of Thrones</span>
+                </a>
+                <button class="navbar-toggler border-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link font-cinzel" href="index.html">Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active font-cinzel" href="personajes.html">Personajes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="text-center mb-4">
+            <h1 class="section-title font-cinzel fw-bold display-5">Personajes de la serie</h1>
+            <div class="divider mx-auto my-3"></div>
+        </section>
+
+        <!-- Barra de controles -->
+        <section class="row g-3 align-items-center mb-4">
+            <div class="col-12 col-md-6">
+                <label for="buscador" class="visually-hidden">Buscar por nombre</label>
+                <input type="search" id="buscador" class="form-control" placeholder="Buscar por nombre...">
+            </div>
+            <div class="col-8 col-md-3">
+                <label for="filtro-casa" class="visually-hidden">Filtrar por casa</label>
+                <select id="filtro-casa" class="form-select">
+                    <option value="">Todas las casas</option>
+                </select>
+            </div>
+            <div class="col-4 col-md-3 text-end">
+                <span id="contador-etiqueta" class="visually-hidden">Resultados mostrados</span>
+                <span id="contador" aria-labelledby="contador-etiqueta">Mostrando 0 de 0</span>
+            </div>
+        </section>
+
+        <!-- Zona de estado: «Cargando personajes...», errores y botón «Reintentar» -->
+        <div id="estado" class="text-center mb-4" aria-live="polite"></div>
+
+        <!-- Listado: las tarjetas las genera js/personajes.js -->
+        <div id="lista-personajes" class="row g-4"></div>
+    </main>
+
+    <footer class="text-center py-4 mt-5 border-top">
+        <p class="mb-1">Grupo 21 · Desarrollo de Aplicaciones Web · UNEMI</p>
+        <p class="mb-0">Datos de la API obtenidos desde <a href="https://thronesapi.com/" target="_blank" rel="noopener noreferrer">Thrones API</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/personajes.js" defer></script>
 </body>
 </html>

@@ -387,6 +387,10 @@
     .section-title {
       font-size: 1.6rem;
     }
+    #contador {
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
   }
 
 

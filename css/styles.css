@@ -166,7 +166,54 @@
 
 /* TODO Fase 3: título de sección y utilidades. */
 
-/* TODO Fase 3: tarjeta de integrante (.card-integrante y sus elementos). */
+/* ==========================================================================
+   07. Tarjeta de integrante (.card-integrante)
+   ========================================================================== */
+   .card-integrante {
+    background-color: var(--grafito);
+    color: var(--pergamino);
+    border: 1px solid var(--acero);
+    border-top: 3px solid var(--oro);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  
+  /* Hover: elevación y borde azul hielo (la línea dorada superior se conserva) */
+  .card-integrante:hover {
+    transform: translateY(-4px);
+    border-color: var(--hielo);
+    border-top-color: var(--oro);
+  }
+  
+  .card-integrante__foto-container {
+    width: 100%;
+    height: 300px;
+    background-color: var(--negro-hierro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-integrante__foto {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .card-integrante__nombre,
+  .card-integrante h3 {
+    color: var(--oro);
+    font-family: var(--fuente-titulos);
+  }
+  
+  .card-integrante__dato {
+    color: var(--hielo);
+  }
+  
+  .card-integrante__dato strong {
+    color: var(--pergamino);
+  }
 
 /* TODO Fase 3: tarjeta de personaje (.card-personaje y sus elementos). */
 

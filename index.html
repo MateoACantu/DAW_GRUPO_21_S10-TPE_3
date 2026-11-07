@@ -1,77 +1,204 @@
 <!DOCTYPE html>
-<!--
-  ============================================================================
-  index.html — Página principal · «Miembros del equipo # 21»
-  Fase 1 · Responsable: [Integrante 1]
-  ============================================================================
-
-  OBJETIVO
-  Construir la página principal del sitio de la serie (Game of Thrones) con la
-  presentación de los seis integrantes del Grupo 21. Este archivo contiene solo
-  la estructura HTML; el diseño vive en css/styles.css y el comportamiento
-  común en js/main.js.
-
-  CONTENIDO QUE DEBE IR EN ESTE ARCHIVO
-  1. Cabecera del documento
-     - <!DOCTYPE html>, lang="es", charset UTF-8 y viewport.
-     - <title> con el nombre de la serie y el grupo.
-     - Bootstrap 5 por CDN con versión fija (solo rejilla y navbar).
-     - Google Fonts: Cinzel para títulos y Lora o Crimson Text para el cuerpo.
-     - Enlace a css/styles.css mediante ruta relativa.
-
-  2. Encabezado y navegación (#navbar)
-     - Logo en img/logo/logo.png (provisional: reemplazar por el emblema
-       propio del grupo) y nombre «Game of Thrones» en Cinzel dorado.
-     - Enlaces «Principal» y «Personajes»; .active en Principal.
-     - En móvil se colapsa con el navbar de Bootstrap.
-
-  3. Título de sección
-     - «Miembros del equipo # 21» centrado, con filete dorado y una línea
-       secundaria con el nombre de la materia.
-
-  4. Rejilla de integrantes (#integrantes, fila de Bootstrap)
-     - Seis tarjetas .card-integrante: 3 columnas en escritorio, 2 en tableta
-       y 1 en móvil.
-     - Cada tarjeta debe incluir: foto, nombre, carrera, nivel, correo
-       (enlace mailto:) y paralelo.
-     - Orden fijo de los datos: carrera, nivel, correo, paralelo.
-     - alt descriptivo en cada foto y overflow-wrap: anywhere para correos
-       largos.
-     - Fotos en img/integrantes/integrante-01.jpg ... integrante-06.jpg.
-
-  5. Pie de página
-     - «Grupo 21 · Desarrollo de Aplicaciones Web · UNEMI».
-     - Crédito de la API enlazado a https://thronesapi.com/ en pestaña nueva.
-
-  6. Carga de scripts
-     - <script src="js/main.js" defer></script> al final del body.
-
-  CONTRATO TÉCNICO QUE DEBE RESPETAR (§7.1 DE LA GUÍA)
-  - #navbar y .nav-link (con .active en la página actual).
-  - #integrantes.
-  - .card-integrante, .card-integrante__foto, .card-integrante__nombre y
-    .card-integrante__dato.
-  - No cambiar estos nombres sin avisar al equipo.
-
-  REGLAS DE LA GUÍA
-  - Solo HTML semántico; sin estilos en línea ni scripts embebidos.
-  - Todas las rutas son relativas: el sitio debe abrir con doble clic.
-  - No se usa base de datos: los datos de los integrantes se escriben aquí.
-  - Los datos personales se toman del Anexo A de la guía.
-  - Un solo dueño por archivo; los cambios se pactan con la fase 5.
-
-  REFERENCIAS
-  - Guía de Planificación: §1 (propósito y alcance), §4 (identidad visual),
-    §5.1 (mockup 1), §6 (estructura de archivos), §7.1 (contrato técnico),
-    §8 Fase 1, §9 (flujo de trabajo en GitHub), §10 (riesgos) y §11
-    (lista de verificación).
-  ============================================================================
--->
 <html lang="es">
 <head>
-  <!-- TODO Fase 1: completar la cabecera descrita en el punto 1. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal · Grupo 21 · Game of Thrones</title>
+    
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts: Cinzel y Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #0E0E10;
+            color: #E9DFC7;
+            font-family: 'Lora', Georgia, serif;
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        #navbar, footer, .card-integrante {
+            background-color: #1C1D21 !important;
+            border-color: #5B6168 !important;
+        }
+        .navbar-brand span, .section-title, .card-integrante h3, footer a {
+            color: #C9A24B !important;
+        }
+        .nav-link {
+            color: #E9DFC7 !important;
+        }
+        .nav-link.active {
+            color: #9B1C1F !important;
+            border-bottom: 2px solid #9B1C1F;
+        }
+        .card-integrante {
+            border: 1px solid #5B6168;
+            border-top: 3px solid #C9A24B;
+            border-radius: 0;
+        }
+        .card-integrante__dato {
+            color: #8FA9B8;
+        }
+        .card-integrante__foto-container {
+            width: 100%;
+            height: 300px;
+            background-color: #141518;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .card-integrante__foto {
+            width: 100%;
+            height: 100% !important;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
-  <!-- TODO Fase 1: construir #navbar, el título de sección, #integrantes y el pie. -->
+
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg border-bottom">
+            <div class="container-fluid">
+                <!-- Logo y Título de la Serie -->
+                <a class="navbar-brand d-flex align-items-center gap-2" href="dex.html">
+                    <img src="img/logo/logo.png" alt="Emblema del Grupo 21" width="40" height="40" class="d-inline-block align-text-top rounded border border-warning">
+                    <span class="series-title font-cinzel fw-bold">Game of Thrones</span>
+                </a>
+                <button class="navbar-toggler border-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active font-cinzel" href="dex.html">Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-cinzel" href="personajes.html">Personajes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="text-center mb-5">
+            <h1 class="section-title font-cinzel fw-bold display-5">Miembros del equipo # 21</h1>
+            <div class="divider mx-auto my-3" style="width: 100px; height: 3px; background-color: #C9A24B;"></div>
+            <p class="text-uppercase fs-6" style="color: #8FA9B8;">Desarrollo de Aplicaciones Web</p>
+        </section>
+
+        <section class="row g-4">
+            <!-- Integrante 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-01.png" class="card-img-top card-integrante__foto rounded-0" alt="Mateo Cantuña">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">MATEO ALEXANDER CANTUÑA INTRIAGO</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> mcantunai@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Integrante 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-02.png" class="card-img-top card-integrante__foto rounded-0" alt="Jhonatan Catota">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">JHONATAN CHRISTIAN CATOTA VERDEZOTO</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> jcatotav@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Integrante 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-03.png" class="card-img-top card-integrante__foto rounded-0" alt="Pablo Farro">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">PABLO ANDRES FARRO VERA</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> pfarrov@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Integrante 4 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-04.png" class="card-img-top card-integrante__foto rounded-0" alt="Juan Carlos Izurieta">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">JUAN CARLOS IZURIETA CISNEROS</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> jizurietac@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Integrante 5 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-05.png" class="card-img-top card-integrante__foto rounded-0" alt="Jorge Lojano">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">JORGE MARCELO LOJANO NOVILLO</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> jlojanon@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Integrante 6 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card card-integrante h-100 shadow-sm">
+                    <div class="card-integrante__foto-container">
+                        <img src="img/integrantes/integrante-06.png" class="card-img-top card-integrante__foto rounded-0" alt="Joseph Vallejo">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title font-cinzel fs-6 fw-bold">JOSEPH SALVATORE VALLEJO RODRIGUEZ</h3>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Carrera:</strong> Tecnologías de la Información</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Nivel:</strong> Sexto</p>
+                        <p class="card-text card-integrante__dato mb-1"><strong>Correo:</strong> jvallejor4@unemi.edu.ec</p>
+                        <p class="card-text card-integrante__dato mt-auto"><strong>Paralelo:</strong> C1</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-4 mt-5 border-top" style="color: #8FA9B8;">
+        <p class="mb-1">Grupo 21 · Desarrollo de Aplicaciones Web · UNEMI</p>
+        <p class="mb-0">Datos de la API obtenidos desde <a href="https://thronesapi.com/" target="_blank" rel="noopener noreferrer" style="color: #C9A24B; text-decoration: none;">Thrones API</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

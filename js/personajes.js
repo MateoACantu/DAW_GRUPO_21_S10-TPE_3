@@ -94,19 +94,31 @@
 
 /**
  * js/personajes.js
- * Módulo para consumir la API de Game of Thrones y renderizar la lista de personajes.
+ * Fase 4: Lógica y consumo de la API (Game of Thrones)
+ * Cumple con el Contrato Técnico del grupo (IDs: lista-personajes, estado, contador, etc.)
  */
 
-// URL oficial de Thrones API (Game of Thrones)
 const API_URL = "https://thronesapi.com/api/v2/Characters";
 
+// Referencias a los elementos del DOM definidos en personajes.html
+const contenedorLista = document.getElementById("lista-personajes");
+const contenedorEstado = document.getElementById("estado");
+const contadorElem = document.getElementById("contador");
+const buscadorInput = document.getElementById("buscador");
+const filtroCasaSelect = document.getElementById("filtro-casa");
+
+let todosLosPersonajes = [];
+
 /**
- * Función asíncrona para obtener los personajes desde la API
+ * Carga los personajes desde Thrones API
  */
 async function cargarPersonajes() {
-  const contenedor = document.getElementById("contenedor-personajes");
+  if (!contenedorLista) return;
 
-  if (!contenedor) return;
+  // Mostrar mensaje de carga en la zona de estado
+  if (contenedorEstado) {
+    contenedorEstado.innerHTML = `<p class="text-info fs-5">Cargando personajes...</p>`;
+  }
 
   try {
     const respuesta = await fetch(API_URL);
@@ -114,45 +126,104 @@ async function cargarPersonajes() {
       throw new Error(`Error en la petición: ${respuesta.status}`);
     }
 
-    const personajes = await respuesta.json();
-    
-    // Tomamos al menos 16 personajes requeridos por la guía
-    const listaSeleccionada = personajes.slice(0, 16);
+    const datos = await respuesta.json();
+    // Tomamos al menos 16 personajes según la guía práctica
+    todosLosPersonajes = datos.slice(0, 16);
 
-    renderizarPersonajes(listaSeleccionada, contenedor);
+    // Limpiar mensaje de estado
+    if (contenedorEstado) contenedorEstado.innerHTML = "";
+
+    // Llenar el selector de casas dinámicamente
+    poblarFiltroCasas(todosLosPersonajes);
+
+    // Renderizar tarjetas iniciales
+    renderizarPersonajes(todosLosPersonajes);
   } catch (error) {
     console.error("Error al obtener los personajes:", error);
-    contenedor.innerHTML = `<p class="error-msg">Ocurrió un error al cargar los personajes. Inténtelo más tarde.</p>`;
+    if (contenedorEstado) {
+      contenedorEstado.innerHTML = `
+        <p class="text-danger fs-5">Ocurrió un error al cargar los personajes.</p>
+        <button class="btn btn-warning" onclick="cargarPersonajes()">Reintentar</button>
+      `;
+    }
   }
 }
 
 /**
- * Renderiza la lista de personajes en el contenedor HTML
- * @param {Array} personajes - Lista de objetos de personajes de Game of Thrones
- * @param {HTMLElement} contenedor - Elemento DOM donde se dibujarán las tarjetas
+ * Renderiza la lista de personajes respetando el contrato de clases CSS del equipo
  */
-function renderizarPersonajes(personajes, contenedor) {
-  contenedor.innerHTML = ""; // Limpiar contenido previo
+function renderizarPersonajes(lista) {
+  contenedorLista.innerHTML = "";
 
-  personajes.forEach((personaje) => {
-    // Crear la tarjeta individual
-    const card = document.createElement("div");
-    card.classList.add("card-personaje");
+  // Actualizar contador ("Mostrando X de Y")
+  if (contadorElem) {
+    contadorElem.textContent = `Mostrando ${lista.length} de ${todosLosPersonajes.length}`;
+  }
 
-    // Estructura HTML adaptada a los campos de Thrones API
-    card.innerHTML = `
-      <img src="${personaje.imageUrl}" alt="${personaje.fullName}" class="img-personaje">
-      <div class="info-personaje">
-        <h3>${personaje.fullName}</h3>
-        <p><strong>Título:</strong> ${personaje.title || "N/A"}</p>
-        <p><strong>Familia/Casa:</strong> ${personaje.family || "Desconocida"}</p>
-        <p><strong>Nombre de pila:</strong> ${personaje.firstName}</p>
+  if (lista.length === 0) {
+    contenedorLista.innerHTML = `<p class="text-center text-muted col-12">No se encontraron personajes que coincidan.</p>`;
+    return;
+  }
+
+  lista.forEach((personaje) => {
+    // Columna Bootstrap ajustada al grid del grupo
+    const col = document.createElement("div");
+    col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
+
+    // Tarjeta individual con la estructura exigida por el equipo (§7.1)
+    col.innerHTML = `
+      <div class="card card-personaje h-100 shadow-sm bg-dark text-light border-secondary">
+        <img src="${personaje.imageUrl}" alt="${personaje.fullName}" class="card-img-top card-personaje__imagen" style="height: 260px; object-fit: cover;">
+        <div class="card-body card-personaje__cuerpo text-center">
+          <h3 class="card-title h5 card-personaje__nombre font-cinzel text-warning">${personaje.fullName}</h3>
+          <p class="card-text card-personaje__dato mb-1"><strong>Título:</strong> ${personaje.title || "Sin título"}</p>
+          <p class="card-text card-personaje__dato mb-1"><strong>Casa:</strong> ${personaje.family || "Desconocida"}</p>
+          <p class="card-text card-personaje__dato mb-0"><small class="text-muted">ID: #${personaje.id}</small></p>
+        </div>
       </div>
     `;
 
-    contenedor.appendChild(card);
+    contenedorLista.appendChild(col);
   });
 }
 
-// Exportar la función globalmente
-window.cargarPersonajes = cargarPersonajes;
+/**
+ * Llena el elemento <select> con las casas detectadas
+ */
+function poblarFiltroCasas(personajes) {
+  if (!filtroCasaSelect) return;
+  const casas = [...new Set(personajes.map((p) => p.family).filter(Boolean))];
+  
+  casas.forEach((casa) => {
+    const option = document.createElement("option");
+    option.value = casa;
+    option.textContent = casa;
+    filtroCasaSelect.appendChild(option);
+  });
+}
+
+/**
+ * Eventos de búsqueda y filtrado
+ */
+if (buscadorInput) {
+  buscadorInput.addEventListener("input", aplicarFiltros);
+}
+if (filtroCasaSelect) {
+  filtroCasaSelect.addEventListener("change", aplicarFiltros);
+}
+
+function aplicarFiltros() {
+  const textoBuscado = buscadorInput ? buscadorInput.value.toLowerCase() : "";
+  const casaSeleccionada = filtroCasaSelect ? filtroCasaSelect.value : "";
+
+  const filtrados = todosLosPersonajes.filter((p) => {
+    const coincideNombre = p.fullName.toLowerCase().includes(textoBuscado);
+    const coincideCasa = casaSeleccionada === "" || p.family === casaSeleccionada;
+    return coincideNombre && coincideCasa;
+  });
+
+  renderizarPersonajes(filtrados);
+}
+
+// Inicializar automáticamente al cargar el DOM
+document.addEventListener("DOMContentLoaded", cargarPersonajes);

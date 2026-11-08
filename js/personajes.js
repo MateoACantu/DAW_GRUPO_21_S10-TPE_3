@@ -94,11 +94,11 @@
 
 /**
  * js/personajes.js
- * Módulo para consumir la API y renderizar la lista de personajes.
+ * Módulo para consumir la API de Game of Thrones y renderizar la lista de personajes.
  */
 
-// URL de la API pública de Rick and Morty
-const API_URL = "https://rickandmortyapi.com/api/character";
+// URL oficial de Thrones API (Game of Thrones)
+const API_URL = "https://thronesapi.com/api/v2/Characters";
 
 /**
  * Función asíncrona para obtener los personajes desde la API
@@ -114,11 +114,12 @@ async function cargarPersonajes() {
       throw new Error(`Error en la petición: ${respuesta.status}`);
     }
 
-    const datos = await respuesta.json();
-    // Tomamos al menos 16 personajes
-    const personajes = datos.results.slice(0, 16);
+    const personajes = await respuesta.json();
+    
+    // Tomamos al menos 16 personajes requeridos por la guía
+    const listaSeleccionada = personajes.slice(0, 16);
 
-    renderizarPersonajes(personajes, contenedor);
+    renderizarPersonajes(listaSeleccionada, contenedor);
   } catch (error) {
     console.error("Error al obtener los personajes:", error);
     contenedor.innerHTML = `<p class="error-msg">Ocurrió un error al cargar los personajes. Inténtelo más tarde.</p>`;
@@ -127,25 +128,25 @@ async function cargarPersonajes() {
 
 /**
  * Renderiza la lista de personajes en el contenedor HTML
- * @param {Array} personajes - Lista de objetos de personajes
- * @param {HTMLElement} contenedor - Elemento DOM donde se dibujarán las cards
+ * @param {Array} personajes - Lista de objetos de personajes de Game of Thrones
+ * @param {HTMLElement} contenedor - Elemento DOM donde se dibujarán las tarjetas
  */
 function renderizarPersonajes(personajes, contenedor) {
   contenedor.innerHTML = ""; // Limpiar contenido previo
 
   personajes.forEach((personaje) => {
-    // Creamos la tarjeta individual
+    // Crear la tarjeta individual
     const card = document.createElement("div");
     card.classList.add("card-personaje");
 
-    // Estructura HTML con la imagen y 4 datos del personaje (Nombre, Especie, Estado, Origen)
+    // Estructura HTML adaptada a los campos de Thrones API
     card.innerHTML = `
-      <img src="${personaje.image}" alt="${personaje.name}" class="img-personaje">
+      <img src="${personaje.imageUrl}" alt="${personaje.fullName}" class="img-personaje">
       <div class="info-personaje">
-        <h3>${personaje.name}</h3>
-        <p><strong>Especie:</strong> ${personaje.species}</p>
-        <p><strong>Estado:</strong> ${personaje.status}</p>
-        <p><strong>Origen:</strong> ${personaje.origin.name}</p>
+        <h3>${personaje.fullName}</h3>
+        <p><strong>Título:</strong> ${personaje.title || "N/A"}</p>
+        <p><strong>Familia/Casa:</strong> ${personaje.family || "Desconocida"}</p>
+        <p><strong>Nombre de pila:</strong> ${personaje.firstName}</p>
       </div>
     `;
 
@@ -153,5 +154,5 @@ function renderizarPersonajes(personajes, contenedor) {
   });
 }
 
-// Exportamos la función si se usa como módulo o la dejamos disponible globalmente
+// Exportar la función globalmente
 window.cargarPersonajes = cargarPersonajes;

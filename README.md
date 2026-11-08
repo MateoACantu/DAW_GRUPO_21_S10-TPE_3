@@ -17,12 +17,12 @@ información en almacenamiento persistente.
 
 | Fase | Rol | Responsable | Archivos a cargo |
 |---|---|---|---|
-| 1 | Maquetación de la página principal | [Integrante 1] | `index.html`, `img/integrantes/` |
-| 2 | Maquetación de la página de personajes | [Integrante 2] | `personajes.html` |
-| 3 | Estilos y diseño visual | [Integrante 3] | `css/styles.css`, `img/logo/` |
-| 4 | Lógica y consumo de la API | [Integrante 4] | `js/main.js`, `js/personajes.js` |
-| 5 | Revisión y estandarización | [Integrante 5] | Todo el repositorio, `README.md`, `.gitignore` |
-| 6 | Informe | [Integrante 6] | `docs/informe/`, `docs/capturas/` |
+| 1 | Maquetación de la página principal | Pablo Farro | `index.html`, `img/integrantes/` |
+| 2 | Maquetación de la página de personajes | Joseph Vallejo | `personajes.html` |
+| 3 | Estilos y diseño visual | Marcelo Lojano | `css/styles.css`, `img/logo/` |
+| 4 | Lógica y consumo de la API | Juan Izurieta | `js/main.js`, `js/personajes.js` |
+| 5 | Revisión y estandarización | Jhonatan Catota | Todo el repositorio, `README.md`, `.gitignore` |
+| 6 | Informe | Mateo Cantuña | `docs/informe/`, `docs/capturas/` |
 
 
 ## Uso académico

@@ -61,6 +61,70 @@ h4 {
 }
 
 /* ==========================================================================
+   04. Utilidades y contenedores
+   ========================================================================== */
+.font-cinzel {
+  font-family: var(--fuente-titulos);
+}
+
+main {
+  min-height: 70vh;
+}
+
+/* ==========================================================================
+   05. Encabezado y navegación (#navbar)
+   ========================================================================== */
+#navbar {
+  background-color: var(--grafito);
+  /* Bootstrap usa esta variable para el color de .border-bottom */
+  --bs-border-color: var(--oro);
+}
+
+#navbar .navbar-brand span {
+  color: var(--oro);
+  letter-spacing: 0.05em;
+}
+
+#navbar .nav-link {
+  color: var(--hielo);
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#navbar .nav-link:hover,
+#navbar .nav-link:focus-visible {
+  color: var(--oro);
+  border-bottom-color: var(--rojo);
+}
+
+#navbar .nav-link.active {
+  color: var(--pergamino);
+  border-bottom-color: var(--rojo);
+}
+
+/* El ícono de hamburguesa de Bootstrap es oscuro; lo aclaramos */
+#navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+#navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem var(--rojo);
+}
+
+/* ==========================================================================
+   06. Título de sección
+   ========================================================================== */
+.section-title {
+  color: var(--oro);
+  font-family: var(--fuente-titulos);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
    07. Tarjeta de integrante (.card-integrante)
    ========================================================================== */
 .card-integrante {
@@ -291,68 +355,4 @@ footer a:focus-visible {
     white-space: nowrap;
     font-size: 0.85rem;
   }
-}
-
-/* ==========================================================================
-   04. Utilidades y contenedores
-   ========================================================================== */
-.font-cinzel {
-  font-family: var(--fuente-titulos);
-}
-
-main {
-  min-height: 70vh;
-}
-
-/* ==========================================================================
-   05. Encabezado y navegación (#navbar)
-   ========================================================================== */
-#navbar {
-  background-color: var(--grafito);
-  /* Bootstrap usa esta variable para el color de .border-bottom */
-  --bs-border-color: var(--oro);
-}
-
-#navbar .navbar-brand span {
-  color: var(--oro);
-  letter-spacing: 0.05em;
-}
-
-#navbar .nav-link {
-  color: var(--hielo);
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid transparent;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-#navbar .nav-link:hover,
-#navbar .nav-link:focus-visible {
-  color: var(--oro);
-  border-bottom-color: var(--rojo);
-}
-
-#navbar .nav-link.active {
-  color: var(--pergamino);
-  border-bottom-color: var(--rojo);
-}
-
-/* El ícono de hamburguesa de Bootstrap es oscuro; lo aclaramos */
-#navbar .navbar-toggler-icon {
-  filter: invert(1);
-}
-
-#navbar .navbar-toggler:focus {
-  box-shadow: 0 0 0 0.2rem var(--rojo);
-}
-
-/* ==========================================================================
-   06. Título de sección
-   ========================================================================== */
-.section-title {
-  color: var(--oro);
-  font-family: var(--fuente-titulos);
-  text-align: center;
-  margin-bottom: 1.5rem;
 }

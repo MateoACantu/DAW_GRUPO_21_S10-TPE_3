@@ -1,6 +1,4 @@
-/* ==========================================================================
-   01. Variables (:root)
-   ========================================================================== */
+/* 01. Variables (:root) */
 
 :root {
   /* Paleta */
@@ -17,9 +15,7 @@
   --fuente-cuerpo: "Lora", Georgia, serif;
 }
 
-/* ==========================================================================
-      02. Reset y base
-      ========================================================================== */
+/*       02. Reset y base       */
 *,
 *::before,
 *::after {
@@ -48,9 +44,7 @@ a:hover {
   color: var(--oro);
 }
 
-/* ==========================================================================
-      03. Tipografía
-      ========================================================================== */
+/*       03. Tipografía       */
 h1,
 h2,
 h3,
@@ -60,9 +54,7 @@ h4 {
   line-height: 1.2;
 }
 
-/* ==========================================================================
-   04. Utilidades y contenedores
-   ========================================================================== */
+/*    04. Utilidades y contenedores    */
 .font-cinzel {
   font-family: var(--fuente-titulos);
 }
@@ -71,9 +63,7 @@ main {
   min-height: 70vh;
 }
 
-/* ==========================================================================
-   05. Encabezado y navegación (#navbar)
-   ========================================================================== */
+/*    05. Encabezado y navegación (#navbar)    */
 #navbar {
   background-color: var(--grafito);
   /* Bootstrap usa esta variable para el color de .border-bottom */
@@ -114,9 +104,7 @@ main {
   box-shadow: 0 0 0 0.2rem var(--rojo);
 }
 
-/* ==========================================================================
-   06. Título de sección
-   ========================================================================== */
+/*    06. Título de sección    */
 .section-title {
   color: var(--oro);
   font-family: var(--fuente-titulos);
@@ -124,9 +112,7 @@ main {
   margin-bottom: 1.5rem;
 }
 
-/* ==========================================================================
-   07. Tarjeta de integrante (.card-integrante)
-   ========================================================================== */
+/*    07. Tarjeta de integrante (.card-integrante)    */
 .card-integrante {
   background-color: var(--grafito);
   color: var(--pergamino);
@@ -175,9 +161,7 @@ main {
   color: var(--pergamino);
 }
 
-/* ==========================================================================
-   08. Tarjeta de personaje (.card-personaje)
-   ========================================================================== */
+/*    08. Tarjeta de personaje (.card-personaje)    */
 .divider {
   width: 120px;
   height: 2px;
@@ -238,9 +222,7 @@ main {
   color: var(--pergamino);
 }
 
-/* ==========================================================================
-     09. Controles y estados (#buscador, #filtro-casa, #contador, #estado)
-     ========================================================================== */
+/*      09. Controles y estados (#buscador, #filtro-casa, #contador, #estado)      */
 #buscador,
 #filtro-casa {
   background-color: var(--grafito);
@@ -294,9 +276,7 @@ main {
   box-shadow: 0 0 0 0.2rem var(--rojo);
 }
 
-/* ==========================================================================
-     10. Pie de página
-     ========================================================================== */
+/*      10. Pie de página      */
 footer {
   background-color: var(--grafito);
   color: var(--hielo);
@@ -313,9 +293,7 @@ footer a:focus-visible {
   color: var(--pergamino);
 }
 
-/* ==========================================================================
-     11. Responsive (576 px, 768 px y 992 px)
-     ========================================================================== */
+/*      11. Responsive (576 px, 768 px y 992 px)      */
 @media (max-width: 992px) {
   .card-integrante__foto-container {
     height: 260px;

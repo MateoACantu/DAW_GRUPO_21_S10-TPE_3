@@ -1,9 +1,3 @@
-# ============================================================================
-# .gitignore — Archivos que no deben subirse al repositorio
-# Fase 5 · Responsable: [Integrante 5]
-# Referencia: Guía de Planificación, §6 (estructura) y §8 Fase 5.
-# ============================================================================
-
 # Sistema operativo
 Thumbs.db
 desktop.ini

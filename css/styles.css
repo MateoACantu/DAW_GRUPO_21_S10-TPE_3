@@ -1,400 +1,299 @@
-/* ============================================================================
-   styles.css — Hoja de estilos única del sitio
-   Fase 3 · Responsable: [Integrante 3]
-   ============================================================================
-
-   OBJETIVO
-   Convertir los mockups de la guía en el aspecto visual final del sitio. Este
-   archivo se organiza por secciones comentadas y consume únicamente las
-   variables declaradas en :root.
-
-   ORDEN RECOMENDADO DE LAS SECCIONES
-   01. Variables (:root)
-   02. Reset y base
-   03. Tipografía
-   04. Utilidades y contenedores
-   05. Encabezado y navegación (#navbar)
-   06. Título de sección
-   07. Tarjeta de integrante (.card-integrante)
-   08. Tarjeta de personaje (.card-personaje)
-   09. Controles y estados (#buscador, #filtro-casa, #contador, #estado)
-   10. Pie de página
-   11. Responsive (576 px, 768 px y 992 px)
-
-   PALETA OBLIGATORIA (§4.2 DE LA GUÍA)
-   Declarar una sola vez en :root y usar var(--nombre) en el resto del archivo.
-   No escribir valores hexadecimales sueltos fuera de :root.
-
-     --negro-hierro : #0E0E10   Fondo general
-     --grafito      : #1C1D21   Barra superior, tarjetas y pie
-     --oro          : #C9A24B   Títulos, etiquetas y líneas decorativas
-     --rojo         : #9B1C1F   Enlaces activos, botones, foco y hover
-     --pergamino    : #E9DFC7   Texto principal sobre fondos oscuros
-     --hielo        : #8FA9B8   Texto secundario y bordes en hover
-     --acero        : #5B6168   Bordes sutiles y texto deshabilitado
-
-   Ejemplo de la declaración que debe existir (hoy comentada como referencia):
-     :root {
-       --negro-hierro: #0E0E10;
-       --grafito:      #1C1D21;
-       --oro:          #C9A24B;
-       --rojo:         #9B1C1F;
-       --pergamino:    #E9DFC7;
-       --hielo:        #8FA9B8;
-       --acero:        #5B6168;
-     }
-
-   TIPOGRAFÍA (§4.3)
-   - Títulos y nombre de la serie: Cinzel (Google Fonts).
-   - Cuerpo: Lora o Crimson Text (Google Fonts).
-   - Declarar siempre una fuente de respaldo: Georgia, serif.
-   - El sitio debe verse bien aunque Google Fonts no cargue.
-
-   COMPONENTES
-   - Encabezado: barra grafito con línea inferior dorada; estados normal,
-     hover y activo. El enlace de la página actual va en pergamino con
-     subrayado rojo; el otro en azul hielo.
-   - Tarjeta de integrante: fondo grafito, borde fino de acero, línea superior
-     dorada, esquinas de 4 px, foto centrada y datos alineados. Hover con
-     elevación y borde azul hielo.
-   - Tarjeta de personaje: disposición horizontal, imagen a la izquierda con
-     proporción fija y object-fit: cover, cuerpo a la derecha con nombre y
-     datos. Hover coherente con la tarjeta de integrante.
-   - Controles: campo de búsqueda y selector con foco visible (anillo rojo o
-     dorado). Mensajes de carga y error legibles.
-   - Pie: fondo grafito, texto secundario y enlace al crédito de la API.
-
-   CONTRATO TÉCNICO QUE DEBE ESTILIZAR (§7.1 Y §7.2)
-   - #navbar, .nav-link, .nav-link.active
-   - #integrantes
-   - .card-integrante, .card-integrante__foto,
-     .card-integrante__nombre, .card-integrante__dato
-   - #buscador, #filtro-casa, #contador, #estado
-   - #lista-personajes
-   - .card-personaje, .card-personaje__imagen, .card-personaje__cuerpo,
-     .card-personaje__nombre, .card-personaje__dato
-
-   RESPONSIVE
-   - Puntos de quiebre: 576 px, 768 px y 992 px.
-   - Sin desplazamiento horizontal en 375 px, 768 px y 1280 px de ancho.
-   - Rejilla de integrantes: 3 columnas en escritorio, 2 en tableta, 1 en móvil.
-   - Rejilla de personajes: 2 columnas en escritorio, 1 en móvil.
-
-   REGLAS DE CALIDAD (§8 FASE 3 Y §8 FASE 5)
-   - Un único archivo CSS, ordenado por secciones comentadas.
-   - Todos los colores mediante variables.
-   - Evitar !important injustificado y reglas duplicadas.
-   - Indentación de 2 espacios y comentarios en español.
-   - Validar con el validador CSS del W3C antes de la integración.
-
-   RECURSOS QUE ACOMPAÑAN A ESTA FASE
-   - img/logo/: emblema propio del grupo (no usar logotipos oficiales de la
-     serie). Puede ser una corona o un escudo sencillo con las iniciales.
-   - img/placeholder-personaje.png: imagen de respaldo cuando falle la imagen
-     de un personaje. Se deja una versión provisional para reemplazar.
-
-   REFERENCIAS
-   - Guía de Planificación: §4.2 (paleta), §4.3 (tipografía y componentes),
-     §5.1 y §5.2 (mockups), §7.1 y §7.2 (contrato), §8 Fase 3, §8 Fase 5 y
-     §10 (riesgos).
-   ============================================================================ */
-
 /* ==========================================================================
    01. Variables (:root)
    ========================================================================== */
 
+:root {
+  /* Paleta */
+  --negro-hierro: #0e0e10;
+  --grafito: #1c1d21;
+  --oro: #c9a24b;
+  --rojo: #9b1c1f;
+  --pergamino: #e9dfc7;
+  --hielo: #8fa9b8;
+  --acero: #5b6168;
 
-   :root {
-     /* Paleta */
-     --negro-hierro: #0E0E10;
-     --grafito:      #1C1D21;
-     --oro:          #C9A24B;
-     --rojo:         #9B1C1F;
-     --pergamino:    #E9DFC7;
-     --hielo:        #8FA9B8;
-     --acero:        #5B6168;
-   
-     /* Tipografía con fuente de respaldo */
-     --fuente-titulos: "Cinzel", Georgia, serif;
-     --fuente-cuerpo:  "Lora", Georgia, serif;
-   }
-   
-   /* ==========================================================================
+  /* Tipografía con fuente de respaldo */
+  --fuente-titulos: "Cinzel", Georgia, serif;
+  --fuente-cuerpo: "Lora", Georgia, serif;
+}
+
+/* ==========================================================================
       02. Reset y base
       ========================================================================== */
-   *,
-   *::before,
-   *::after {
-     box-sizing: border-box;
-   }
-   
-   body {
-     margin: 0;
-     background-color: var(--negro-hierro);
-     color: var(--pergamino);
-     font-family: var(--fuente-cuerpo);
-     line-height: 1.6;
-   }
-   
-   img {
-     max-width: 100%;
-     height: auto;
-     display: block;
-   }
-   
-   a {
-     color: var(--hielo);
-   }
-   
-   a:hover {
-     color: var(--oro);
-   }
-   
-   /* ==========================================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--negro-hierro);
+  color: var(--pergamino);
+  font-family: var(--fuente-cuerpo);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--hielo);
+}
+
+a:hover {
+  color: var(--oro);
+}
+
+/* ==========================================================================
       03. Tipografía
       ========================================================================== */
-   h1,
-   h2,
-   h3,
-   h4 {
-     font-family: var(--fuente-titulos);
-     color: var(--oro);
-     line-height: 1.2;
-   }
-
-
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fuente-titulos);
+  color: var(--oro);
+  line-height: 1.2;
+}
 
 /* ==========================================================================
    07. Tarjeta de integrante (.card-integrante)
    ========================================================================== */
-   .card-integrante {
-    background-color: var(--grafito);
-    color: var(--pergamino);
-    border: 1px solid var(--acero);
-    border-top: 3px solid var(--oro);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-  
-  /* Hover: elevación y borde azul hielo (la línea dorada superior se conserva) */
-  .card-integrante:hover {
-    transform: translateY(-4px);
-    border-color: var(--hielo);
-    border-top-color: var(--oro);
-  }
-  
-  .card-integrante__foto-container {
-    width: 100%;
-    height: 300px;
-    background-color: var(--negro-hierro);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card-integrante__foto {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  .card-integrante__nombre,
-  .card-integrante h3 {
-    color: var(--oro);
-    font-family: var(--fuente-titulos);
-  }
-  
-  .card-integrante__dato {
-    color: var(--hielo);
-  }
-  
-  .card-integrante__dato strong {
-    color: var(--pergamino);
-  }
+.card-integrante {
+  background-color: var(--grafito);
+  color: var(--pergamino);
+  border: 1px solid var(--acero);
+  border-top: 3px solid var(--oro);
+  border-radius: 4px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Hover: elevación y borde azul hielo (la línea dorada superior se conserva) */
+.card-integrante:hover {
+  transform: translateY(-4px);
+  border-color: var(--hielo);
+  border-top-color: var(--oro);
+}
+
+.card-integrante__foto-container {
+  width: 100%;
+  height: 300px;
+  background-color: var(--negro-hierro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-integrante__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-integrante__nombre,
+.card-integrante h3 {
+  color: var(--oro);
+  font-family: var(--fuente-titulos);
+}
+
+.card-integrante__dato {
+  color: var(--hielo);
+}
+
+.card-integrante__dato strong {
+  color: var(--pergamino);
+}
 
 /* ==========================================================================
    08. Tarjeta de personaje (.card-personaje)
    ========================================================================== */
-   .divider {
-    width: 120px;
-    height: 2px;
-    background-color: var(--oro);
-  }
-  
-  .card-personaje {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    background-color: var(--grafito);
-    color: var(--pergamino);
-    border: 1px solid var(--acero);
-    border-top: 3px solid var(--oro);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-  
-  /* Hover coherente con la tarjeta de integrante */
-  .card-personaje:hover {
-    transform: translateY(-4px);
-    border-color: var(--hielo);
-    border-top-color: var(--oro);
-  }
-  
-  .card-personaje__imagen {
-    flex: 0 0 40%;
-    width: 40%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    background-color: var(--negro-hierro);
-  }
-  
-  .card-personaje__cuerpo {
-    flex: 1;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .card-personaje__nombre {
-    color: var(--oro);
-    font-family: var(--fuente-titulos);
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card-personaje__dato {
-    color: var(--hielo);
-    margin-bottom: 0.25rem;
-  }
-  
-  .card-personaje__dato strong {
-    color: var(--pergamino);
-  }
-  
-  /* ==========================================================================
+.divider {
+  width: 120px;
+  height: 2px;
+  background-color: var(--oro);
+}
+
+.card-personaje {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  background-color: var(--grafito);
+  color: var(--pergamino);
+  border: 1px solid var(--acero);
+  border-top: 3px solid var(--oro);
+  border-radius: 4px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Hover coherente con la tarjeta de integrante */
+.card-personaje:hover {
+  transform: translateY(-4px);
+  border-color: var(--hielo);
+  border-top-color: var(--oro);
+}
+
+.card-personaje__imagen {
+  flex: 0 0 40%;
+  width: 40%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-color: var(--negro-hierro);
+}
+
+.card-personaje__cuerpo {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-personaje__nombre {
+  color: var(--oro);
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-personaje__dato {
+  color: var(--hielo);
+  margin-bottom: 0.25rem;
+}
+
+.card-personaje__dato strong {
+  color: var(--pergamino);
+}
+
+/* ==========================================================================
      09. Controles y estados (#buscador, #filtro-casa, #contador, #estado)
      ========================================================================== */
-  #buscador,
-  #filtro-casa {
-    background-color: var(--grafito);
-    color: var(--pergamino);
-    border: 1px solid var(--acero);
-    border-radius: 4px;
-  }
-  
-  #buscador::placeholder {
-    color: var(--acero);
-  }
-  
-  /* Foco visible con anillo rojo */
-  #buscador:focus,
-  #filtro-casa:focus {
-    background-color: var(--grafito);
-    color: var(--pergamino);
-    border-color: var(--rojo);
-    box-shadow: 0 0 0 0.2rem var(--rojo);
-    outline: none;
-  }
-  
-  #filtro-casa option {
-    background-color: var(--grafito);
-    color: var(--pergamino);
-  }
-  
-  #contador {
-    color: var(--hielo);
-    font-size: 0.95rem;
-  }
-  
-  /* Mensajes de carga y error, y botón Reintentar */
-  #estado {
-    color: var(--pergamino);
-    font-size: 1.05rem;
-  }
-  
-  #estado .btn {
-    background-color: var(--rojo);
-    border-color: var(--rojo);
-    color: var(--pergamino);
-    font-family: var(--fuente-titulos);
-  }
-  
-  #estado .btn:hover,
-  #estado .btn:focus-visible {
-    background-color: var(--grafito);
-    border-color: var(--oro);
-    color: var(--oro);
-    box-shadow: 0 0 0 0.2rem var(--rojo);
-  }
-  
-  /* ==========================================================================
+#buscador,
+#filtro-casa {
+  background-color: var(--grafito);
+  color: var(--pergamino);
+  border: 1px solid var(--acero);
+  border-radius: 4px;
+}
+
+#buscador::placeholder {
+  color: var(--acero);
+}
+
+/* Foco visible con anillo rojo */
+#buscador:focus,
+#filtro-casa:focus {
+  background-color: var(--grafito);
+  color: var(--pergamino);
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 0.2rem var(--rojo);
+  outline: none;
+}
+
+#filtro-casa option {
+  background-color: var(--grafito);
+  color: var(--pergamino);
+}
+
+#contador {
+  color: var(--hielo);
+  font-size: 0.95rem;
+}
+
+/* Mensajes de carga y error, y botón Reintentar */
+#estado {
+  color: var(--pergamino);
+  font-size: 1.05rem;
+}
+
+#estado .btn {
+  background-color: var(--rojo);
+  border-color: var(--rojo);
+  color: var(--pergamino);
+  font-family: var(--fuente-titulos);
+}
+
+#estado .btn:hover,
+#estado .btn:focus-visible {
+  background-color: var(--grafito);
+  border-color: var(--oro);
+  color: var(--oro);
+  box-shadow: 0 0 0 0.2rem var(--rojo);
+}
+
+/* ==========================================================================
      10. Pie de página
      ========================================================================== */
-  footer {
-    background-color: var(--grafito);
-    color: var(--hielo);
-    /* Bootstrap usa esta variable para el color de .border-top */
-    --bs-border-color: var(--oro);
-  }
-  
-  footer a {
-    color: var(--oro);
-  }
-  
-  footer a:hover,
-  footer a:focus-visible {
-    color: var(--pergamino);
-  }
-  
-  /* ==========================================================================
+footer {
+  background-color: var(--grafito);
+  color: var(--hielo);
+  /* Bootstrap usa esta variable para el color de .border-top */
+  --bs-border-color: var(--oro);
+}
+
+footer a {
+  color: var(--oro);
+}
+
+footer a:hover,
+footer a:focus-visible {
+  color: var(--pergamino);
+}
+
+/* ==========================================================================
      11. Responsive (576 px, 768 px y 992 px)
      ========================================================================== */
-  @media (max-width: 992px) {
-    .card-integrante__foto-container {
-      height: 260px;
-    }
+@media (max-width: 992px) {
+  .card-integrante__foto-container {
+    height: 260px;
   }
-  
-  @media (max-width: 768px) {
-    .card-integrante__foto-container {
-      height: 240px;
-    }
-  
-    .section-title {
-      font-size: 2rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .card-integrante__foto-container {
-      height: 220px;
-    }
-  
-    /* En móvil la tarjeta de personaje pasa a disposición vertical */
-    .card-personaje {
-      flex-direction: column;
-    }
-  
-    .card-personaje__imagen {
-      flex: none;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-    }
-  
-    .section-title {
-      font-size: 1.6rem;
-    }
-    #contador {
-      white-space: nowrap;
-      font-size: 0.85rem;
-    }
+}
+
+@media (max-width: 768px) {
+  .card-integrante__foto-container {
+    height: 240px;
   }
 
+  .section-title {
+    font-size: 2rem;
+  }
+}
 
-  /* ==========================================================================
+@media (max-width: 576px) {
+  .card-integrante__foto-container {
+    height: 220px;
+  }
+
+  /* En móvil la tarjeta de personaje pasa a disposición vertical */
+  .card-personaje {
+    flex-direction: column;
+  }
+
+  .card-personaje__imagen {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+  #contador {
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================================================
    04. Utilidades y contenedores
    ========================================================================== */
 .font-cinzel {
@@ -423,7 +322,9 @@ main {
   color: var(--hielo);
   padding-bottom: 0.25rem;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 #navbar .nav-link:hover,
